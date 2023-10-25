@@ -25,4 +25,7 @@ urlpatterns = [
     path("app/units/", include("apps.storage_units.urls")),
     path("app/orders/", include("apps.order.urls")),
     path("app/notifications/", include("apps.notifications.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
